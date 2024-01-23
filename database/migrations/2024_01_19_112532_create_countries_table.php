@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->string('continent');
-            $table->string('name');
-            $table->string('capital');
+            $table->string('continent')->default('NULL');
+            $table->string('name')->default('NULL');
+            $table->string('capital')->default('NULL');
             $table->bigInteger('student_id')->unsigned();
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('set null');
             $table->timestamps();
         });
     }

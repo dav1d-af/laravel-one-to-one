@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('academics', function (Blueprint $table) {
             $table->id();
-            $table->string('course');
-            $table->string('year');
+            $table->string('course')->default('NULL');
+            $table->string('year')->default('NULL');
             $table->bigInteger('student_id')->unsigned();
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('set null');
             $table->timestamps();
         });
     }
